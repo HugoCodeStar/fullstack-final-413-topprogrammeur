@@ -5,7 +5,7 @@ var router = express.Router();
 var pgp = require("pg-promise")(/*options*/);
 var db = pgp("postgres://postgres:massi2008@localhost:5432/postgres");
 
-let taskList=[];
+
 let data;
 /* GET users listing. */
 
@@ -25,7 +25,7 @@ router.post('/counter/delete', async function(req, res, next) {
     //taskList.splice(taskList.findIndex((elem) => elem.id === req.body.id), 1);
 console.log(req.body)
     data =await db.any(`select * from todo`)
-    taskList=data
+
    res.send(taskList);
 });
 
@@ -38,7 +38,7 @@ router.post('/counter/true', async function(req, res) {
 
     console.log(req.body.id)
     data =await db.any(`select * from todo`)
-    taskList=data
+
     res.send(data);
 });
 router.post('/counter/false', async function(req, res) {
