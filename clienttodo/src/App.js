@@ -10,7 +10,6 @@ function App() {
         fetch('http://localhost:5000/api/counterUF')
             .then(response => response.json())
             .then((data) => setTodoList(data))
-        //.then((data) => console.log(data))
     }, [])
 
   return (

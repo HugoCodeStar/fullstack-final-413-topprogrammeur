@@ -1,13 +1,10 @@
 import "./todoapp.css";
 import Todo from "./Todo";
 
-
-
 function TodoList(props) {
 
     const noCompletedList=()=>{
-
-    props.setTodoList(props.todoList.filter((t) => t.isCompleted==='completed'))
+        props.setTodoList(props.todoList.filter((t) => t.isCompleted==='completed'))
 
         fetch('http://localhost:5000/api/counterUF', {
             method: 'get',
@@ -15,38 +12,30 @@ function TodoList(props) {
             //body: JSON.stringify([props.todoList])
         })
             .then(res => res.json())
-            // .then((data) => console.log(data))
             .then((data) => props.setTodoList(data.filter((r)=>r.isCompleted==='completed')))
-
     }
+
     const completedList=()=>{
-
-
         props.setTodoList( props.todoList.filter((t) => t.isCompleted==='noCompleted'))
 
         fetch('http://localhost:5000/api/counterUF', {
             method: 'get',
             headers: {'Content-Type': 'application/json;charset=utf-8'},
-            //body: JSON.stringify([props.todoList])
         })
             .then(res => res.json())
-            // .then((data) => console.log(data))
             .then((data) =>  props.setTodoList(data.filter((r)=>r.isCompleted==='noCompleted')))
     }
 
-
     const finListe=()=>{
 
-    fetch('http://localhost:5000/api/counter/laListe', {
-        method: 'get',
-        headers: {'Content-Type': 'application/json;charset=utf-8'},
-        //body: JSON.stringify([props.todoList])
-    })
-        .then(res => res.json())
-        // .then((data) => console.log(data))
-        .then((data) => props.setTodoList(data))
-
-}
+        fetch('http://localhost:5000/api/counter/laListe', {
+            method: 'get',
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            //body: JSON.stringify([props.todoList])
+        })
+            .then(res => res.json())
+            .then((data) => props.setTodoList(data))
+    }
 
     return (
 

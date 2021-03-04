@@ -2,17 +2,19 @@ import React, { useState} from "react";
 import "./todoapp.css";
 import TodoList from "./TodoList";
 import "./App.css";
+
+
 function TodoForm(props) {
-    const [todo, setTodo] = useState('')
+        const [todo, setTodo] = useState('')
 
        const addTodo=()=> {
        let todoDetails;
             if (todo !== "") {
-        todoDetails= {
-                        id: Math.floor(Math.random() * 10000),
-                        value: todo,
-                        isCompleted: 'noCompleted',
-                      }
+            todoDetails= {
+                            id: Math.floor(Math.random() * 10000),
+                            value: todo,
+                            isCompleted: 'noCompleted',
+                          }
         props.setTodoList([...props.todoList, todoDetails]);
 
         }
@@ -24,10 +26,8 @@ function TodoForm(props) {
             body: JSON.stringify({todoDetails})
         })
             .then(res => res.json())
-          //.then((data) => console.log(data))
-         .then((data) => props.setTodoList(data))
-
-}
+            .then((data) => props.setTodoList(data))
+       }
 
     return (
 
