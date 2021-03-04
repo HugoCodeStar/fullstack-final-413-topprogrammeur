@@ -45,7 +45,7 @@ function Todo(props) {
 
          const arrayDelete = props.todoList.filter((t) => t.id !==id)
          console.log(props.id)
-        props.setTodoList(arrayDelete)
+         props.setTodoList(arrayDelete)
 
         fetch('http://localhost:5000/api/counter/delete', {
             method: 'post',

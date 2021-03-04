@@ -5,8 +5,8 @@ import Todo from "./Todo";
 
 function TodoList(props) {
 
-    const noCompletedList=(e)=>{
-e.preventDefault()
+    const noCompletedList=()=>{
+
     props.setTodoList(props.todoList.filter((t) => t.isCompleted==='completed'))
 
         fetch('http://localhost:5000/api/counterUF', {
@@ -35,7 +35,7 @@ e.preventDefault()
     }
 
 
-const laliste=()=>{
+    const finListe=()=>{
 
     fetch('http://localhost:5000/api/counter/laListe', {
         method: 'get',
@@ -54,7 +54,7 @@ const laliste=()=>{
               <ul >{props.todoList.map((o)=>(
                    <Todo isCompleted={o.isCompleted}  id={o.id} key={o.id} value={o.value} todoList={props.todoList} setTodoList={props.setTodoList} />))}
 
-                    <button className="completedt" onClick={(e)=>noCompletedList(e)}>
+                    <button className="completedt" onClick={noCompletedList}>
                         Complétés
                     </button>
 
@@ -62,7 +62,7 @@ const laliste=()=>{
                         Non complétés
                     </button>
 
-                    <button  className="completedt" onClick={laliste}>
+                    <button  className="completedt" onClick={finListe}>
                         Fin de la liste
                     </button>
               </ul>
