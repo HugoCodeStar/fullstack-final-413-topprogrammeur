@@ -5,13 +5,13 @@ import "./App.css";
 function TodoForm(props) {
     const [todo, setTodo] = useState('')
 
-   const addTodo=()=> {
+       const addTodo=()=> {
        let todoDetails;
             if (todo !== "") {
         todoDetails= {
                         id: Math.floor(Math.random() * 10000),
                         value: todo,
-                       isCompleted: 'noCompleted',
+                        isCompleted: 'noCompleted',
                       }
         props.setTodoList([...props.todoList, todoDetails]);
 
@@ -27,23 +27,23 @@ function TodoForm(props) {
           //.then((data) => console.log(data))
          .then((data) => props.setTodoList(data))
 
-
 }
 
+    return (
 
-    return (<div className="todo">
-        <input
-        type="text"
-        value={todo}
-        onChange={(e)=>setTodo(e.target.value)}
-        placeholder="Add todo here..."
+            <div className="todo">
+                        <input
+                            type="text"
+                            value={todo}
+                            onChange={(e)=>setTodo(e.target.value)}
+                            placeholder="Add todo here..."
+                        />
+                            <button className="add-btn" onClick={addTodo}>
+                              Add todo
+                            </button>
 
-    />
-            <button className="add-btn" onClick={addTodo}>
-        Add todo
-    </button>
-<TodoList todoList={props.todoList} setTodoList={props.setTodoList} />
-    </div>)
+                         <TodoList todoList={props.todoList} setTodoList={props.setTodoList} />
+            </div>)
 }
 
 export default TodoForm;

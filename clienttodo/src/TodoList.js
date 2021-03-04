@@ -17,8 +17,6 @@ e.preventDefault()
             .then(res => res.json())
             // .then((data) => console.log(data))
             .then((data) => props.setTodoList(data.filter((r)=>r.isCompleted==='completed')))
-      // const r=props.todoList.filter((c) => c.isCompleted!=='completed')
-        console.log(props.todoList)
 
     }
     const completedList=()=>{
@@ -34,8 +32,6 @@ e.preventDefault()
             .then(res => res.json())
             // .then((data) => console.log(data))
             .then((data) =>  props.setTodoList(data.filter((r)=>r.isCompleted==='noCompleted')))
-console.log(props.todoList)
-
     }
 
 
@@ -52,26 +48,24 @@ const laliste=()=>{
 
 }
 
-    return (<div  className="todo">{props.todoList!== [] ? (
-      <ul >
+    return (
 
-{props.todoList.map((o)=>(
+        <div  className="todo">{props.todoList!== [] ? (
+              <ul >{props.todoList.map((o)=>(
+                   <Todo isCompleted={o.isCompleted}  id={o.id} key={o.id} value={o.value} todoList={props.todoList} setTodoList={props.setTodoList} />))}
 
+                    <button className="completedt" onClick={(e)=>noCompletedList(e)}>
+                        Complétés
+                    </button>
 
-    <Todo isCompleted={o.isCompleted}  id={o.id} key={o.id} value={o.value} todoList={props.todoList} setTodoList={props.setTodoList} />))}
+                    <button className="completedt"   onClick={completedList}>
+                        Non complétés
+                    </button>
 
-    <button className="completedt" onClick={(e)=>noCompletedList(e)}>
-        Complétés
-    </button>
-    <button className="completedt"   onClick={completedList}>
-        Non complétés
-    </button>
-    <button  className="completedt" onClick={laliste}>
-        Fin de la liste
-    </button>
-
-      </ul>
-
+                    <button  className="completedt" onClick={laliste}>
+                        Fin de la liste
+                    </button>
+              </ul>
        ):null}
     </div>)
 }

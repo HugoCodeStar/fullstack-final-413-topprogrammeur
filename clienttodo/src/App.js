@@ -12,11 +12,12 @@ function App() {
             .then((data) => setTodoList(data))
         //.then((data) => console.log(data))
     }, [])
+
   return (
-      <div className="App">
-          <TodoForm todoList={todoList} setTodoList={setTodoList} />
-       </div>
-  );
+           <div className="App">
+              <TodoForm todoList={todoList} setTodoList={setTodoList} />
+           </div>
+         )
 }
 
 export default App;
